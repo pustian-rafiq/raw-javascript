@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discuss between var vs let</title>
+</head>
+<body>
+    
+    <script>
+    //varaible var
+    //Variables, declared with var, are either function-scoped or global-scoped. They are visible through blocks.
+   if (true) {
+        var test = true; // use "var" instead of "let"
+        }
+
+        alert(test); // true, the variable lives after if because var work outside the block.it's global variable
+
+
+
+    /*
+    //let
+    If we used let test instead of var test, then the variable would only be visible inside if:
+    */
+    if (true) {
+         let test = true; 
+      }
+
+       alert(test); // Error: test is not defined because let doesn't work outside the block.It's not global
+
+
+    
+     //If a code block is inside a function, then var becomes a function-level variable:
+    //for example
+    function sayHi() {
+        if (true) {
+            var phrase = "Hello";
+        }
+
+        alert(phrase); // works
+        }
+
+        sayHi();
+        alert(phrase); // Error: phrase is not defined 
+   //var” tolerates redeclarations
+   //If we declare the same variable with let twice in the same scope, that’s an error:
+        let user;
+        let user; // SyntaxError: 'user' has already been declared
+    //With var, we can redeclare a variable any number of times. If we use var with an already-declared variable, it’s just ignored:    
+            var user = "Pete";
+
+            var user = "John"; // this "var" does nothing (already declared)
+        // ...it doesn't trigger an error
+
+        alert(user); // John
+
+
+        //“var” variables can be declared below their use
+        //In other words, var variables are defined from the beginning of the function, 
+        //no matter where the definition is (assuming that the definition is not in the nested function).
+        function sayHi() {
+            phrase = "Hello";
+
+            alert(phrase);
+
+            var phrase;
+            }
+            sayHi();
+    </script>
+
+
+</body>
+</html>
